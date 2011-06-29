@@ -41,18 +41,63 @@ irc.on('ready', function(){
     irc.emit('o.msgSent', 'Message has been sent!');
   });
   
+  irc.on('i.join.o.join', function (fullEvent, event, channel) {
+    ircClient.join(channel, function () {
+      irc.emit('o.joined', channel);
+    });
+  });
+  
+  irc.on('i.part.o.part', function (fullEvent, event, channel) {
+    ircClient.part(channel, function () {
+      irc.emit('o.parted', channel);
+    });
+  });
+  
   function shell() {
     var properties = {
           message: 'Command>',
           name: 'command'
-        }
+        },
+        msg;
     prompt.resume();
     prompt.get(properties, function (err, results) {
       prompt.pause();
       if (err) { return console.log(err.stack); }
       var command = results.command.split(' ');
-      ircClient.say(command[0], command.slice(1).join(' '));
-      shell();
+      switch (command[0]) {
+        case 'say':
+          command.shift();
+          msg = command.slice(1).join(' ');
+          ircClient.say(command[0], msg);
+          irc.emit('o.said', msg);
+          shell();
+          break;
+        case 'join':
+          command.shift();
+          ircClient.join(command[0], function () {
+            console.log('Joined: ', command[0]);
+            irc.emit('o.joined', command[0]);
+          });
+          shell();
+          break;
+        case 'part':
+          command.shift();
+          ircClient.part(command[0], function () {
+            console.log('Left: ', command[0]);
+            irc.emit('o.parted', command[0]);
+          });
+          shell();
+          break;
+        case 'exit':
+          console.log('Goodbye!');
+          ircClient.disconnect('http://github.com/Marak/hook.io-irc');
+          process.exit();
+          break;
+        default:
+          console.log('Sorry, I do not understand.');
+          shell();
+          break;
+      }
     });
   }
 });
