@@ -1,0 +1,59 @@
+#! /usr/bin/env node
+
+var Hook = require('hook.io').Hook,
+    prompt = require('prompt');
+
+var ircModule = require('irc');
+
+var irc = new Hook( {
+  name: 'irc'
+});
+
+irc.connect();
+prompt.start();
+prompt.pause();
+
+irc.on('ready', function(){
+  
+  var ircClient = new ircModule.Client(
+      "irc.freenode.net",
+      "hookio",
+      { "channels": ["#kohai", "#nodetestsu"] }
+  );
+  
+  ircClient.on('motd', function (motd) {
+    irc.emit('o.ircConnect', 'Connected successfully!');
+    console.log('hook.io-irc has successfully connected to IRC.');
+    ircClient.say('#nodetestsu', 'Hook.io is surely a good idea if it produced something like me!');
+    shell();
+  });
+  
+  ircClient.on('error',function() {
+    console.log(arguments);
+  });
+
+  ircClient.on('message',function() {
+    irc.emit('o.message', arguments)
+  });
+  
+  irc.on('i.say.o.say', function (fullEvent, event, dest, msg) {
+    ircClient.say(dest, msg);
+    irc.emit('o.msgSent', 'Message has been sent!');
+  });
+  
+  function shell() {
+    var properties = {
+          message: 'Command>',
+          name: 'command'
+        }
+    prompt.resume();
+    prompt.get(properties, function (err, results) {
+      prompt.pause();
+      if (err) { return console.log(err.stack); }
+      var command = results.command.split(' ');
+      ircClient.say(command[0], command.slice(1).join(' '));
+      shell();
+    });
+  }
+});
+
