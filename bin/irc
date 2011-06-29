@@ -1,104 +1,17 @@
 #! /usr/bin/env node
 
-var Hook = require('hook.io').Hook,
-    prompt = require('prompt');
+var IRC = require('../lib/irc').IRC;
 
-var ircModule = require('irc');
-
-var irc = new Hook( {
-  name: 'irc'
+var irc = new IRC( {
+  name: 'irc',
+  server: 'irc.freenode.net',
+  nick: 'hookio',
+  channels: ['#kohai', '#nodetestsu'],
+  showErrors: true,
+  userName: 'hookio',
+  realName: 'Hook.io IRC Client'
 });
 
 irc.connect();
-prompt.start();
-prompt.pause();
 
-irc.on('ready', function(){
-  
-  var ircClient = new ircModule.Client(
-      "irc.freenode.net",
-      "hookio",
-      { "channels": ["#kohai", "#nodetestsu"] }
-  );
-  
-  ircClient.on('motd', function (motd) {
-    irc.emit('o.ircConnect', 'Connected successfully!');
-    console.log('hook.io-irc has successfully connected to IRC.');
-    ircClient.say('#nodetestsu', 'Hook.io is surely a good idea if it produced something like me!');
-    shell();
-  });
-  
-  ircClient.on('error',function() {
-    console.log(arguments);
-  });
-
-  ircClient.on('message',function() {
-    irc.emit('o.message', arguments)
-  });
-  
-  irc.on('i.say.o.say', function (fullEvent, event, dest, msg) {
-    ircClient.say(dest, msg);
-    irc.emit('o.msgSent', 'Message has been sent!');
-  });
-  
-  irc.on('i.join.o.join', function (fullEvent, event, channel) {
-    ircClient.join(channel, function () {
-      irc.emit('o.joined', channel);
-    });
-  });
-  
-  irc.on('i.part.o.part', function (fullEvent, event, channel) {
-    ircClient.part(channel, function () {
-      irc.emit('o.parted', channel);
-    });
-  });
-  
-  function shell() {
-    var properties = {
-          message: 'Command>',
-          name: 'command'
-        },
-        msg;
-    prompt.resume();
-    prompt.get(properties, function (err, results) {
-      prompt.pause();
-      if (err) { return console.log(err.stack); }
-      var command = results.command.split(' ');
-      switch (command[0]) {
-        case 'say':
-          command.shift();
-          msg = command.slice(1).join(' ');
-          ircClient.say(command[0], msg);
-          irc.emit('o.said', msg);
-          shell();
-          break;
-        case 'join':
-          command.shift();
-          ircClient.join(command[0], function () {
-            console.log('Joined: ', command[0]);
-            irc.emit('o.joined', command[0]);
-          });
-          shell();
-          break;
-        case 'part':
-          command.shift();
-          ircClient.part(command[0], function () {
-            console.log('Left: ', command[0]);
-            irc.emit('o.parted', command[0]);
-          });
-          shell();
-          break;
-        case 'exit':
-          console.log('Goodbye!');
-          ircClient.disconnect('http://github.com/Marak/hook.io-irc');
-          process.exit();
-          break;
-        default:
-          console.log('Sorry, I do not understand.');
-          shell();
-          break;
-      }
-    });
-  }
-});
 
