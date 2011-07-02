@@ -1,6 +1,10 @@
 #! /usr/bin/env node
 
-var IRC = require('../lib/irc').IRC;
+var IRC = require('../lib/irc').IRC,
+	argv = require('optimist').argv,
+	shell = (argv.s || argv.shell ? true : false);
+
+
 
 var irc = new IRC( {
   name: 'irc',
@@ -9,8 +13,11 @@ var irc = new IRC( {
   channels: ['#kohai', '#nodetestsu'],
   showErrors: true,
   userName: 'hookio',
-  realName: 'Hook.io IRC Client'
+  realName: 'Hook.io IRC Client',
+  shell: shell
 });
+
+
 
 irc.connect();
 
