@@ -11,6 +11,7 @@ To install:
 Usage:
 
      cd hook.io-irc
+     npm install
      bin/irc [-s or --shell for command-line client]
 
 More coming soon!
