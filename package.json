@@ -1,0 +1,22 @@
+{
+    "name": "hook.io-irc",
+    "description": "IRC Client hook for hook.io",
+    "version": "0.0.1",
+    "author": "AvianFlu",
+    "repository": {
+        "type": "git", 
+        "url": "http://github.com/AvianFlu/hook.io-irc.git" 
+    },
+    "bin": {
+      "hookio-irc": "bin/irc"
+    },
+    "dependencies": {
+       "hook.io": "0.4.x",
+       "optimist": ">=0.2.4",
+       "prompt": "0.1.x",
+       "irc": "0.2.x"
+     }, 
+    "engine": [
+        "node 0.4.x" 
+    ]
+}
