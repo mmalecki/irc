@@ -1,7 +1,8 @@
-#! /usr/bin/env node
+#!/usr/bin/env node
 
 var IRC = require('../lib/irc').IRC,
 	argv = require('optimist').argv,
+  colors = require('colors'),
 	shell = (argv.s || argv.shell ? true : false);
 
 
@@ -10,15 +11,17 @@ var irc = new IRC( {
   name: 'irc',
   server: 'irc.freenode.net',
   nick: 'hookio',
-  channels: ['#kohai', '#nodetestsu'],
+  channels: ['#nodetestsu', '#nodebombrange'],
   showErrors: true,
   userName: 'hookio',
   realName: 'Hook.io IRC Client',
-  shell: shell
+  promptMsg: 'Hook.io-IRC'.red.bold,
+  promptDelim: '>'.blue.bold,
+  useShell: shell
 });
 
 
 
-irc.connect();
+irc.start();
 
 
