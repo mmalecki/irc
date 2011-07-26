@@ -1,7 +1,7 @@
 {
     "name": "hook.io-irc",
-    "description": "IRC Client hook for hook.io",
-    "version": "0.0.1",
+    "description": "IRC Client for hook.io",
+    "version": "0.1.0",
     "author": "AvianFlu",
     "repository": {
         "type": "git", 
