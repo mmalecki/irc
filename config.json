@@ -1,1 +1,11 @@
-{}
+{
+  "server": "irc.freenode.net",
+  "nick": "hookio",
+  "channels": ["#nodetestsu", "#nodebombrange", "#kohai"],
+  "showErrors": "true",
+  "userName": "hookio",
+  "realName": "Hook.io IRC Client",
+  "promptMsg": "Hook.io-IRC",
+  "promptDelim": ">",
+  "useShell": "s"
+}

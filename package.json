@@ -1,18 +1,24 @@
 {
     "name": "hook.io-irc",
     "description": "IRC Client for hook.io",
-    "version": "0.1.0",
-    "author": "AvianFlu",
+    "version": "0.3.0",
+    "author": "AvianFlu <charlie@charlieistheman.com>",
+    "contributors": [
+      {
+        "name" : "Marak Squires",
+        "email" : "marak.squires@gmail.com"
+      }
+    ],
     "repository": {
         "type": "git", 
-        "url": "http://github.com/AvianFlu/hook.io-irc.git" 
+        "url": "http://github.com/hookio/irc.git"
     },
     "bin": {
       "hookio-irc": "bin/irc"
     },
     "main": "./lib/irc",
     "dependencies": {
-       "hook.io": "0.4.x",
+       "hook.io": "0.6.x",
        "optimist": "0.2.x",
        "prompt": ">=0.1.3",
        "irc": "0.2.x"
