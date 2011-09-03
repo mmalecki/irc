@@ -2,16 +2,34 @@
 
 Hook.io IRC is a client wrapper around [node-irc](http://github.com/martynsmith/node-irc) that provides both support for hook.io events (emitting them on IRC events and providing a Hook.io API for IRC interaction) and a basic command-line interface for direct IRC interaction.  
 
-###To install:
+## Installation
 
      git clone git@github.com:hookio/irc.git
      cd irc
      npm install
- 
+     node bin/irc
 
-### Hook Event Names
+### Using NPM
 
-Events listened for:
+    npm install hook.io-irc
+    hookio-irc
+
+### Command-line Usage:
+
+    hookio-irc [-s or --shell for command-line client]
+
+The command-line client is a simple wrapper around the existing API.  Here are a few sample commands to try:
+
+     say #channel Hi, this is my message!
+     command nickserv identify leetpassword
+     join #Node.js
+     part #channel
+     exit
+
+
+## Hook Event Names
+
+### Event Listeners
 
 **sendMsg** *{dest, msg}* - Sends an IRC message to the provided nick/channel.
 
@@ -23,7 +41,7 @@ Events listened for:
 
 **exit** - Causes the hook to disconnect from IRC and exit.
 
-Events emitted:
+### Events Emitted:
 
 **ircConnected** *{ircNick, channels}* - Emitted when Hook.io IRC has finished connecting to the server.
 
@@ -49,7 +67,7 @@ Events emitted:
 
 ### Hook config.json settings
 
-```json
+```js
 {
   "server": "irc.freenode.net",
   "nick": "awesomebot",
@@ -65,14 +83,3 @@ Events emitted:
 }
 ```
 
-### Command-line Usage:
-
-     bin/irc [-s or --shell for command-line client]
-
-The command-line client is a simple wrapper around the existing API.  Here are a few sample commands to try:
-
-      say #channel Hi, this is my message!
-      command nickserv identify leetpassword
-      join #Node.js
-      part #channel
-      exit
