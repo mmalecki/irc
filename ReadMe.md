@@ -47,7 +47,7 @@ The command-line client is a simple wrapper around the existing API.  Here are a
 
 **serverNotice** *{to, text}* - Emitted when a notice is received from the IRCd.
 
-**gotMessage** *{nick, to, text}* - Emitted when an IRC message (or pm) is received.
+**gotMsg** *{nick, to, text}* - Emitted when an IRC message (or pm) is received.
 
 **Ijoined** *{channel}* - Emitted when Hook.io IRC joins a channel.
 
@@ -69,7 +69,7 @@ The command-line client is a simple wrapper around the existing API.  Here are a
 
 ```js
 {
-  "server": "irc.freenode.net",
+  "irc-server": "irc.freenode.net",
   "nick": "awesomebot",
   "password": "",
   "channels": ["#nodetestsu", "#nodebombrange", "#kohai"],
