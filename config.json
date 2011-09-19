@@ -1,5 +1,6 @@
 {
   "irc-server": "irc.freenode.net",
+  "port": 6667,
   "nick": "hookio-test",
   "channels": ["#nodetestsu", "#nodebombrange", "#kohai"],
   "showErrors": "true",
