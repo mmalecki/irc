@@ -1,7 +1,7 @@
 {
     "name": "hook.io-irc",
     "description": "IRC Client for hook.io",
-    "version": "0.4.0",
+    "version": "0.4.1",
     "author": "AvianFlu <charlie@charlieistheman.com>",
     "contributors": [
       {
