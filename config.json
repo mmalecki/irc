@@ -2,7 +2,7 @@
   "irc-server": "irc.freenode.net",
   "port": 6667,
   "nick": "hookio-test",
-  "channels": ["#nodetestsu", "#nodebombrange", "#kohai"],
+  "channels": ["#hook.io", "#nodebombrange", "#kohai"],
   "showErrors": "true",
   "userName": "hookio",
   "realName": "Hook.io IRC Client",

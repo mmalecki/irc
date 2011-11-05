@@ -1,9 +1,13 @@
 {
     "name": "hook.io-irc",
     "description": "IRC Client for hook.io",
-    "version": "0.4.2",
-    "author": "AvianFlu <charlie@charlieistheman.com>",
+    "version": "0.5.0",
+    "author": "Nodejitsu <support@nodejitsu.com>",
     "contributors": [
+      {
+        "name" : "Marak Squires",
+        "email" : "marak.squires@gmail.com"
+      },
       {
         "name" : "Marak Squires",
         "email" : "marak.squires@gmail.com"

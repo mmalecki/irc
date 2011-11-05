@@ -4,7 +4,7 @@ var IRC   = require('../lib/irc').IRC;
 
 var irc = new IRC( {
   name: 'irc',
-  useShell: "true"
+  debug: true
 });
 
 irc.start();
