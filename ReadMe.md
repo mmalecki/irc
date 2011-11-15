@@ -31,39 +31,39 @@ The command-line client is a simple wrapper around the existing API.  Here are a
 
 ### Event Listeners
 
-**sendMsg** *{dest, msg}* - Sends an IRC message to the provided nick/channel.
+**irc::msg** *{dest, msg}* - Sends an IRC message to the provided nick/channel.
 
-**join** *channel* - Joins the channel specified.
+**irc::join** *channel* - Joins the channel specified.
 
-**part** *channel* - Parts from the provided channel, or the current channel if none is specified.
+**irc::part** *channel* - Parts from the provided channel, or the current channel if none is specified.
 
-**command** *string* - Sends [string] as a raw IRC command.
+**irc::command** *string* - Sends [string] as a raw IRC command.
 
-**exit** - Causes the hook to disconnect from IRC and exit.
+**irc::exit** - Causes the hook to disconnect from IRC and exit.
 
 ### Events Emitted:
 
-**ircConnected** *{ircNick, channels}* - Emitted when Hook.io IRC has finished connecting to the server.
+**irc::connected** *{ircNick, channels}* - Emitted when Hook.io IRC has finished connecting to the server.
 
-**serverNotice** *{to, text}* - Emitted when a notice is received from the IRCd.
+**irc::serverNotice** *{to, text}* - Emitted when a notice is received from the IRCd.
 
-**gotMsg** *{nick, to, text}* - Emitted when an IRC message (or pm) is received.
+**irc::msg** *{nick, to, text}* - Emitted when an IRC message (or pm) is received.
 
-**Ijoined** *{channel}* - Emitted when Hook.io IRC joins a channel.
+**irc::joined** *{channel}* - Emitted when Hook.io IRC joins a channel.
 
-**Iparted** *{channel}* - Emitted when Hook.io IRC leaves a channel.
+**irc::parted** *{channel}* - Emitted when Hook.io IRC leaves a channel.
 
-**userJoined** *{channel, nick}* - Emitted when a user joins a channel that Hook.io IRC is part of.
+**irc::joined** *{channel, nick}* - Emitted when a user joins a channel that Hook.io IRC is part of.
 
-**userParted** *{channel, nick}* - Emitted when a user leaves a channel that Hook.io IRC is part of.
+**irc::parted** *{channel, nick}* - Emitted when a user leaves a channel that Hook.io IRC is part of.
 
-**nickChange** *{oldNick, newNick}* - Emitted when a user changes nicks.
+**irc::nickChange** *{oldNick, newNick}* - Emitted when a user changes nicks.
 
-**userQuit** *{nick, reason, channels}* - Emitted when a user quits.
+**irc::userQuit** *{nick, reason, channels}* - Emitted when a user quits.
 
-**userKicked** *{channel, by, reason}* - Emitted when a user is kicked from a channel that Hook.io IRC is connected to.
+**irc::userKicked** *{channel, by, reason}* - Emitted when a user is kicked from a channel that Hook.io IRC is connected to.
 
-**gotKicked** *{channel, by, reason}* - Emitted when the Hook.io IRC user is kicked from a channel.
+**irc::gotKicked** *{channel, by, reason}* - Emitted when the Hook.io IRC user is kicked from a channel.
 
 ### Hook config.json settings
 
@@ -78,7 +78,6 @@ The command-line client is a simple wrapper around the existing API.  Here are a
   "realName": "Hook.io IRC Client",
   "promptMsg": "Hook.io-IRC",
   "promptDelim": ">",
-  "useShell": false,
   "idCheck": true
 }
 ```
