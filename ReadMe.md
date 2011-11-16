@@ -14,19 +14,6 @@ Hook.io IRC is a client wrapper around [node-irc](http://github.com/martynsmith/
     npm install hook.io-irc
     hookio-irc
 
-### Command-line Usage:
-
-    hookio-irc [-s or --shell for command-line client]
-
-The command-line client is a simple wrapper around the existing API.  Here are a few sample commands to try:
-
-     say #channel Hi, this is my message!
-     command nickserv identify leetpassword
-     join #Node.js
-     part #channel
-     exit
-
-
 ## Hook Event Names
 
 ### Event Listeners
@@ -76,8 +63,6 @@ The command-line client is a simple wrapper around the existing API.  Here are a
   "showErrors": "true",
   "userName": "hookio",
   "realName": "Hook.io IRC Client",
-  "promptMsg": "Hook.io-IRC",
-  "promptDelim": ">",
   "idCheck": true
 }
 ```

@@ -6,6 +6,4 @@
   "showErrors": "true",
   "userName": "hookio",
   "realName": "Hook.io IRC Client",
-  "promptMsg": "Hook.io-IRC",
-  "promptDelim": ">"
 }
