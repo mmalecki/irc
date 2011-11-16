@@ -5,5 +5,5 @@
   "channels": ["#hook.io", "#nodebombrange", "#kohai"],
   "showErrors": "true",
   "userName": "hookio",
-  "realName": "Hook.io IRC Client",
+  "realName": "Hook.io IRC Client"
 }

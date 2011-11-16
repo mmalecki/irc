@@ -9,8 +9,8 @@
         "email" : "marak.squires@gmail.com"
       },
       {
-        "name" : "Marak Squires",
-        "email" : "marak.squires@gmail.com"
+        "name" : "AvianFlu",
+        "email" : "avianflu@nodejitsu.com"
       }
     ],
     "repository": {
@@ -26,6 +26,6 @@
        "irc": "0.2.x"
      }, 
     "engine": [
-        "node 0.4.x" 
+        "node 0.4.x"
     ]
 }
